@@ -1,0 +1,10 @@
+fastapi==0.111.0
+uvicorn==0.30.1
+pipecat-ai==0.2.1
+webrtc-transport==0.1.5
+dspy-ai==2.4.9
+openai==1.30.5
+anthropic==0.26.1
+elevenlabs==1.0.10
+python-dotenv==1.0.1
+pydantic==2.7.4
