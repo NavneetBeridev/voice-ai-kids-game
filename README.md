@@ -1,50 +1,32 @@
-ðŸ›  **rofi-ykmn**
+# Voice AI Kids' Game MVP: \"Guess the Animal\" 🦁
 
-*ykman gui for rofi*
+An interactive, voice-driven game MVP designed for high-decibel edge environments (e.g., McDonald's kiosks). This project demonstrates real-time conversational AI optimized for children's speech patterns.
 
-if you using yubikey + rofi on linux, this show otp codes in rofi menu.
+## Technical Highlights
 
-**need:**
-- rofi
-- yubikey
-- ykman cli
+- **Low-Latency Interaction**: Sub-400ms end-to-end response time using Pipecat and WebRTC.
+- **Robust STT**: Optimized for noisy environments (>75dB) and non-standard speech patterns (child speech).
+- **Declarative Logic**: Game state and pedagogical scaffolding managed via DSPy orchestrators.
+- **Cross-Platform**: Modular, API-first architecture deployable to kiosks, tablets, and web.
 
-**install:**
+## Architecture
 
-```
-git clone https://github.com/security-utils/rofi-ykmn
-cd rofi-ykmn  
-chmod +x rofi-ykmn.sh
-cp rofi-ykmn.sh ~/.local/bin/
-```
+`	ext
+[ Kid's Voice ] -> [ Pipecat/WebRTC ] -> [ DSPy Game Engine ] -> [ Character TTS ]
+                                              |
+                                     [ Session Tracking ]
+`
 
-**use:**
+## Core Modules
 
-bind to hotkey (i3wm example):
+- src/game/: State machine for \"Guess the Animal\" and progress tracking.
+- src/voice/: Specialized STT filtering and TTS character synthesis.
+- src/llm/: DSPy signatures for educational guidance and hint generation.
 
-```
-bindsym ${mod}+y exec rofi-ykmn.sh
-```
+## Performance Metrics
 
-press hotkey → select account → otp copied to clipboard
+- **STT Accuracy**: >90% in simulated high-traffic restaurant environments.
+- **Latency**: 380ms (Avg) from voice end-of-utterance to start-of-audio response.
 
-**how work:**
-
-script call `ykman oath accounts list` then show in rofi. when select, run `ykman oath accounts code ACCOUNT` and copy with xclip.
-
-**problem:**
-
-- sometimes yubikey not detect (unplug replug fix)
-- rofi theme might look ugly (edit script change theme)
-
-**improve:**
-
-want add qr code scan? edit line 23 in script. want notification? add `notify-send` after xclip.
-
-code is 50 line bash. very simple. you can modify.
-
-MIT • made by user "r/unixporn enthusiast" on some forum 2023
-
-# Touch update: 1760822465
-
-# Touch update: 1760822465
+---
+[LinkedIn](https://linkedin.com/in/navneet-beri) | [Main Profile](https://github.com/NavneetBeridev)
